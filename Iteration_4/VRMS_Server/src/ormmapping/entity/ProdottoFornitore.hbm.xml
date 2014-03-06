@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.ProdottoFornitore" table="ProdottoFornitore">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <many-to-one access="field" cascade="lock" class="entity.Fornitore" column="FornitoreID" lazy="no-proxy" name="fornitore" not-null="true">
+		</many-to-one>
+    <property column="Nome" lazy="false" length="255" name="nome" not-null="false" type="string"/>
+    <property column="Tempo" lazy="false" length="11" name="tempo" not-null="true" type="integer"/>
+    <property column="Genere" lazy="false" length="255" name="genere" not-null="false" type="string"/>
+    <property column="Supporto" lazy="false" length="255" name="supporto" not-null="false" type="string"/>
+    <property column="Anno_produzione" lazy="false" length="11" name="anno_produzione" not-null="true" type="integer"/>
+  </class>
+</hibernate-mapping>

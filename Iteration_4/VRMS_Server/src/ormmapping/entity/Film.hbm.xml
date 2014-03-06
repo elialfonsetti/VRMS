@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.Film" table="Film">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <many-to-one access="field" cascade="lock" class="entity.Formato" column="FormatoNome_formato" lazy="no-proxy" name="formato_film" not-null="false">
+		</many-to-one>
+    <many-to-one access="field" cascade="lock" class="entity.Descrizione" column="DescrizioneID" lazy="no-proxy" name="descrizione_film" not-null="true">
+		</many-to-one>
+    <property column="Disponibile" lazy="false" length="1" name="disponibile" not-null="true" type="boolean"/>
+  </class>
+</hibernate-mapping>

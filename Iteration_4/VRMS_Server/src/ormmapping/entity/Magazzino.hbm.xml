@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.Magazzino" table="Magazzino">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <property column="Indirizzo" lazy="false" length="255" name="indirizzo" not-null="false" type="string"/>
+    <set cascade="save-update,lock" inverse="false" lazy="true" name="ORM_Lista_film___List_Film_">
+      <key column="MagazzinoID" not-null="true"/>
+      <one-to-many class="entity.Film"/>
+    </set>
+  </class>
+</hibernate-mapping>

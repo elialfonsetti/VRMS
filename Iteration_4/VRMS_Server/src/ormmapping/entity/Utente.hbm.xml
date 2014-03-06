@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class discriminator-value="Utente" lazy="false" name="entity.Utente" table="Utente">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <discriminator column="Discriminator" type="string"/>
+    <property column="Nome" lazy="false" length="255" name="nome" not-null="false" type="string"/>
+    <property column="Cognome" lazy="false" length="255" name="cognome" not-null="false" type="string"/>
+    <property column="Telefono" lazy="false" length="255" name="telefono" not-null="false" type="string"/>
+    <subclass discriminator-value="Cliente" lazy="false" name="entity.Cliente">
+      <many-to-one access="field" cascade="save-update,lock" class="entity.Tessera" column="TesseraCodice" lazy="no-proxy" name="tessera_personale" not-null="false" unique="true">
+			</many-to-one>
+      <property column="Id_card" lazy="false" length="255" name="id_card" not-null="false" type="string"/>
+      <property column="Email" lazy="false" length="255" name="email" not-null="false" type="string"/>
+    </subclass>
+    <subclass discriminator-value="Cassiere" lazy="false" name="entity.Cassiere">
+      <property column="PIN" lazy="false" length="255" name="PIN" not-null="false" type="string"/>
+    </subclass>
+  </class>
+</hibernate-mapping>

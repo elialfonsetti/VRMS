@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class discriminator-value="Operazione" lazy="false" name="entity.Operazione" table="Operazione">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <discriminator column="Discriminator" type="string"/>
+    <many-to-one access="field" cascade="save-update,lock" class="entity.Tessera" column="TesseraCodice" lazy="no-proxy" name="tessera" not-null="false" unique="true">
+		</many-to-one>
+    <many-to-one access="field" cascade="lock" class="entity.Terminale" column="TerminaleCodice" lazy="no-proxy" name="origine_noleggio" not-null="false">
+		</many-to-one>
+    <property column="Aperto" lazy="false" length="1" name="aperto" not-null="true" type="boolean"/>
+    <subclass discriminator-value="Transizione" lazy="false" name="entity.Transizione">
+      <many-to-one access="field" cascade="save-update,lock" class="entity.Film" column="FilmID" lazy="no-proxy" name="film_noleggiato" not-null="false" unique="true">
+			</many-to-one>
+      <property column="Data_inizio" lazy="false" name="data_inizio" not-null="false" type="date"/>
+      <property column="Data_fine" lazy="false" name="data_fine" not-null="false" type="date"/>
+      <property column="Tipo" lazy="false" length="255" name="tipo" not-null="false" type="string"/>
+      <property column="Costo_totale" lazy="false" name="costo_totale" not-null="false" type="float"/>
+    </subclass>
+    <subclass discriminator-value="Richiesta" lazy="false" name="entity.Richiesta">
+      <property column="Data_ordine" lazy="false" name="data_ordine" not-null="false" type="date"/>
+      <property column="Titolo" lazy="false" length="255" name="titolo" not-null="false" type="string"/>
+      <property column="Fornitore" lazy="false" length="255" name="fornitore" not-null="false" type="string"/>
+      <property column="Formato" lazy="false" length="255" name="formato" not-null="false" type="string"/>
+    </subclass>
+  </class>
+</hibernate-mapping>

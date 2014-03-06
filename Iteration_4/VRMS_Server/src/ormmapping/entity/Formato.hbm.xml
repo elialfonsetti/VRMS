@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.Formato" table="Formato">
+    <id column="Nome_formato" name="nome_formato" type="string">
+      <generator class="assigned">
+			</generator>
+    </id>
+    <property column="Costo" lazy="false" name="costo" not-null="true" type="float"/>
+    <set cascade="save-update,lock" inverse="true" lazy="true" name="ORM_Films">
+      <key column="FormatoNome_formato" not-null="false"/>
+      <one-to-many class="entity.Film"/>
+    </set>
+  </class>
+</hibernate-mapping>

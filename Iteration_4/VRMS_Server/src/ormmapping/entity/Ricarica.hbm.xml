@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.Ricarica" table="Ricarica">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <many-to-one access="field" cascade="lock" class="entity.Tessera" column="TesseraCodice" lazy="no-proxy" name="tessera" not-null="false">
+		</many-to-one>
+    <many-to-one access="field" cascade="lock" class="entity.Cassiere" column="UtenteID" lazy="no-proxy" name="cassiere" not-null="true">
+		</many-to-one>
+    <property column="Data" lazy="false" name="data" not-null="false" type="date"/>
+    <property column="Ammontare" lazy="false" name="ammontare" not-null="true" type="float"/>
+  </class>
+</hibernate-mapping>

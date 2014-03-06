@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<hibernate-mapping>
+  <class lazy="false" name="entity.Descrizione" table="Descrizione">
+    <id column="ID" name="ID" type="integer" unsaved-value="0">
+      <generator class="native">
+			</generator>
+    </id>
+    <many-to-one access="field" cascade="lock" class="entity.Genere" column="GenereNome" lazy="no-proxy" name="genere" not-null="false">
+		</many-to-one>
+    <property column="Titolo" lazy="false" length="255" name="titolo" not-null="false" type="string"/>
+    <property column="Durata" lazy="false" length="255" name="durata" not-null="false" type="string"/>
+    <property column="Anno" lazy="false" length="11" name="anno" not-null="true" type="integer"/>
+    <property column="Costo" lazy="false" name="costo" not-null="true" type="float"/>
+    <property column="Locandina" lazy="false" length="255" name="locandina" not-null="false" type="string"/>
+    <property column="Trama" lazy="false" length="255" name="Trama" not-null="false" type="string"/>
+  </class>
+</hibernate-mapping>
